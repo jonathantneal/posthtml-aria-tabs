@@ -1,0 +1,25 @@
+<section id="foo" role="tabpanel" aria-labelledby="foo-tab">
+	This is the foo tab.
+</section>
+
+<section id="bar" role="tabpanel" aria-labelledby="bar-tab" hidden>
+	This is the bar tab.
+</section>
+
+<section id="qux" role="tabpanel" aria-labelledby="qux-tab" hidden>
+	This is the qux tab.
+</section>
+
+<ul role="tablist">
+	<li role="presentation">
+		<a href="#foo" aria-selected="true" id="foo-tab" role="tab" aria-controls="foo">Foo</a>
+	</li>
+
+	<li role="presentation">
+		<a href="#bar" id="bar-tab" role="tab" aria-controls="bar">Bar</a>
+	</li>
+
+	<li role="presentation">
+		<a href="#qux" id="qux-tab" role="tab" aria-controls="qux">Qux</a>
+	</li>
+</ul>
