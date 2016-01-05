@@ -1,0 +1,98 @@
+<!doctype html>
+<title>PostHTML ARIA Tabs</title>
+<meta charset="utf-8">
+<script src="client.js"></script>
+<link href="style.css" rel="stylesheet">
+
+<h1>
+	PostHTML ARIA Tabs
+</h1>
+
+<p>
+	This is a small guide to marking up fully accessible tabs.
+	Consider using <a href="https://github.com/jonathantneal/posthtml-aria-tabs">PostHTML ARIA Tabs</a> as a practical solution.
+</p>
+
+<ul role="tablist">
+	<li role="presentation">
+		<a href="#rules" aria-selected="true" id="rules-tab" role="tab" aria-controls="rules">Rules</a>
+	</li>
+
+	<li role="presentation">
+		<a href="#markup" id="markup-tab" role="tab" aria-controls="markup">Markup</a>
+	</li>
+
+	<li role="presentation">
+		<a href="#caveats" id="caveats-tab" role="tab" aria-controls="caveats">Caveats</a>
+	</li>
+</ul>
+
+<section id="rules" role="tabpanel" aria-labelledby="rules-tab">
+	<h3>
+		Rules
+	</h3>
+
+	<ol>
+		<li>Add <code>tablist</code> role to the <code>&lt;ul&gt;</code> to indicate it contains tabs.</li>
+		<li>Add <code>presentation</code> role to each <code>&lt;li&gt;</code> to bypass its list item state.</li>
+		<li>Add <code>tab</code> role to each <code>&lt;a&gt;</code> to incidate it is an actual tab.</li>
+		<li>Add <code>href</code> and <code>aria-controls</code> to each <code>&lt;a&gt;</code> to reference its tab panel.</li>
+		<li>Add <code>id</code> to each <code>&lt;a&gt;</code> as a reference for its tab panel.</li>
+		<li>Add <code>aria-selected="true"</code> to the active <code>&lt;a&gt;</code> tab.</li>
+		<li>Add <code>tabpanel</code> role to each <code>&lt;section&gt;</code> to indicate it is a tab panel.</li>
+		<li>Add <code>id</code> to each <code>&lt;section&gt;</code> as a reference for its tab.</li>
+		<li>Add <code>aria-labelledby</code> to each <code>&lt;section&gt;</code> to reference its label.</li>
+		<li>Add <code>hidden</code> to each inactive <code>&lt;section&gt;</code> to indicate it is hidden.</li>
+	</ol>
+
+	<p>
+		Learn more about the <a href="#markup">markup</a> or <a href="#caveats">caveats</a>.
+	</p>
+</section>
+
+<section id="markup" role="tabpanel" aria-labelledby="markup-tab" hidden>
+	<h3>
+		Markup
+	</h3>
+
+	<pre>&lt;<span class="pl-ent">ul</span> <span class="pl-e">role</span>=<span class="pl-s"><span class="pl-pds">"</span>tablist<span class="pl-pds">"</span></span>&gt;
+    &lt;<span class="pl-ent">li</span> <span class="pl-e">role</span>=<span class="pl-s"><span class="pl-pds">"</span>presentation<span class="pl-pds">"</span></span>&gt;
+        &lt;<span class="pl-ent">a</span> <span class="pl-e">id</span>=<span class="pl-s"><span class="pl-pds">"</span>foo-tab<span class="pl-pds">"</span></span> <span class="pl-e">href</span>=<span class="pl-s"><span class="pl-pds">"</span>#foo<span class="pl-pds">"</span></span> <span class="pl-e">role</span>=<span class="pl-s"><span class="pl-pds">"</span>tab<span class="pl-pds">"</span></span> <span class="pl-e">aria-controls</span>=<span class="pl-s"><span class="pl-pds">"</span>foo<span class="pl-pds">"</span></span> <span class="pl-e">aria-selected</span>=<span class="pl-s"><span class="pl-pds">"</span>true<span class="pl-pds">"</span></span>&gt;Foo&lt;/<span class="pl-ent">a</span>&gt;
+    &lt;/<span class="pl-ent">li</span>&gt;
+
+    &lt;<span class="pl-ent">li</span> <span class="pl-e">role</span>=<span class="pl-s"><span class="pl-pds">"</span>presentation<span class="pl-pds">"</span></span>&gt;
+        &lt;<span class="pl-ent">a</span> <span class="pl-e">id</span>=<span class="pl-s"><span class="pl-pds">"</span>bar-tab<span class="pl-pds">"</span></span> <span class="pl-e">href</span>=<span class="pl-s"><span class="pl-pds">"</span>#bar<span class="pl-pds">"</span></span> <span class="pl-e">role</span>=<span class="pl-s"><span class="pl-pds">"</span>tab<span class="pl-pds">"</span></span> <span class="pl-e">aria-controls</span>=<span class="pl-s"><span class="pl-pds">"</span>bar<span class="pl-pds">"</span></span>&gt;Bar&lt;/<span class="pl-ent">a</span>&gt;
+    &lt;/<span class="pl-ent">li</span>&gt;
+
+    &lt;<span class="pl-ent">li</span> <span class="pl-e">role</span>=<span class="pl-s"><span class="pl-pds">"</span>presentation<span class="pl-pds">"</span></span>&gt;
+        &lt;<span class="pl-ent">a</span> <span class="pl-e">id</span>=<span class="pl-s"><span class="pl-pds">"</span>qux-tab<span class="pl-pds">"</span></span> <span class="pl-e">href</span>=<span class="pl-s"><span class="pl-pds">"</span>#qux<span class="pl-pds">"</span></span> <span class="pl-e">role</span>=<span class="pl-s"><span class="pl-pds">"</span>tab<span class="pl-pds">"</span></span> <span class="pl-e">aria-controls</span>=<span class="pl-s"><span class="pl-pds">"</span>qux<span class="pl-pds">"</span></span>&gt;Qux&lt;/<span class="pl-ent">a</span>&gt;
+    &lt;/<span class="pl-ent">li</span>&gt;
+&lt;/<span class="pl-ent">ul</span>&gt;
+
+&lt;<span class="pl-ent">section</span> <span class="pl-e">id</span>=<span class="pl-s"><span class="pl-pds">"</span>foo<span class="pl-pds">"</span></span> <span class="pl-e">role</span>=<span class="pl-s"><span class="pl-pds">"</span>tabpanel<span class="pl-pds">"</span></span> <span class="pl-e">aria-labelledby</span>=<span class="pl-s"><span class="pl-pds">"</span>foo-tab<span class="pl-pds">"</span></span>&gt;
+    ...
+&lt;/<span class="pl-ent">section</span>&gt;
+
+&lt;<span class="pl-ent">section</span> <span class="pl-e">id</span>=<span class="pl-s"><span class="pl-pds">"</span>bar<span class="pl-pds">"</span></span> <span class="pl-e">role</span>=<span class="pl-s"><span class="pl-pds">"</span>tabpanel<span class="pl-pds">"</span></span> <span class="pl-e">aria-labelledby</span>=<span class="pl-s"><span class="pl-pds">"</span>bar-tab<span class="pl-pds">"</span></span> <span class="pl-e">hidden</span>&gt;
+    ...
+&lt;/<span class="pl-ent">section</span>&gt;
+
+&lt;<span class="pl-ent">section</span> <span class="pl-e">id</span>=<span class="pl-s"><span class="pl-pds">"</span>qux<span class="pl-pds">"</span></span> <span class="pl-e">role</span>=<span class="pl-s"><span class="pl-pds">"</span>tabpanel<span class="pl-pds">"</span></span> <span class="pl-e">aria-labelledby</span>=<span class="pl-s"><span class="pl-pds">"</span>qux-tab<span class="pl-pds">"</span></span> <span class="pl-e">hidden</span>&gt;
+    ...
+&lt;/<span class="pl-ent">section</span>&gt;</pre>
+
+	<p>
+		Learn more about the <a href="#rules">rules</a> or <a href="#caveats">caveats</a>.
+	</p>
+</section>
+
+<section id="caveats" role="tabpanel" aria-labelledby="caveats-tab" hidden>
+	<ul>
+		<li>Internet Explorer 10 and below require explicit CSS to support <code>[hidden]</code>, e.g. <code>[hidden] { display: none; }</code>.</li>
+		<li><code>&lt;ul&gt;</code> and <code>&lt;li&gt;</code> elements are used for source readability and (to a much lesser extent) progressive enhancement. While both of their implied semantics are overwritten, these elements best represent a collection of items.</li>
+	</ul>
+
+	<p>
+		Learn more about the <a href="#rules">rules</a> or <a href="#markup">markup</a>.
+	</p>
+</section>

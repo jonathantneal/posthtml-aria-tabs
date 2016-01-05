@@ -1,0 +1,55 @@
+body {
+	font: 300 100%/1.5 sans-serif;
+	margin: 3em;
+	padding: 0 calc(50% - 800px / 2);
+}
+
+code {
+	background-color: rgba(0,0,0,.04);
+	border-radius: 3px;
+	display: inline-block;
+	font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+	font-size: 85%;
+	padding: .1em;
+}
+
+[role="tablist"] {
+	padding: 0;
+}
+
+[role="tablist"] li {
+	display: inline-block;
+}
+
+[role="tab"] {
+	display: block;
+	font-size: 2rem;
+	padding: 1em;
+	text-decoration: none;
+}
+
+[aria-selected] {
+	text-decoration: underline;
+}
+
+pre {
+	background-color: #f7f7f7;
+	border-radius: 3px;
+	color: #333;
+	font: 85%/1.45 Consolas, "Liberation Mono", Menlo, Courier, monospace;
+	overflow: auto;
+	padding: 16px;
+	word-break: normal;
+}
+
+.pl-ent {
+	color: #63a35c;
+}
+
+.pl-e {
+	color: #795da3;
+}
+
+.pl-s {
+	color: #183691;
+}
